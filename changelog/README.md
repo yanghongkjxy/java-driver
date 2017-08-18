@@ -1,5 +1,10 @@
 ## Changelog
 
+### 3.4.0 (in progress)
+
+- [documentation] JAVA-1607: Add FAQ entry for netty-transport-native-epoll
+
+
 ### 3.3.0
 
 - [bug] JAVA-1469: Update LoggingRetryPolicy to deal with SLF4J-353.
