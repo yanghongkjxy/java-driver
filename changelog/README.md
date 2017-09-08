@@ -1,5 +1,10 @@
 ## Changelog
 
+### 3.4.0 (in progress)
+
+- [new feature] JAVA-1603: Send keyspace option per-query
+
+
 ### 3.3.0
 
 - [bug] JAVA-1469: Update LoggingRetryPolicy to deal with SLF4J-353.
