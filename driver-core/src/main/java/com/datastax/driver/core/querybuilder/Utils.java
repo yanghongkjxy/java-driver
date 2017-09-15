@@ -84,11 +84,13 @@ abstract class Utils {
         return sb;
     }
 
-    static StringBuilder joinAndAppendValues(StringBuilder sb, CodecRegistry codecRegistry, List<?> values, List<Object> variables) {
-        for (int i = 0; i < values.size(); i++) {
-            if (i > 0)
+    static StringBuilder joinAndAppendValues(StringBuilder sb, CodecRegistry codecRegistry, Collection<?> values, List<Object> variables) {
+        boolean first = true;
+        for (Object value : values) {
+            if (!first)
                 sb.append(",");
-            appendValue(values.get(i), codecRegistry, sb, variables);
+            appendValue(value, codecRegistry, sb, variables);
+            first = false;
         }
         return sb;
     }

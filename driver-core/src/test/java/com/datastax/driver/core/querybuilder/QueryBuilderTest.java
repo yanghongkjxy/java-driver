@@ -604,6 +604,10 @@ public class QueryBuilderTest {
         select = select("a", "b").from("foo").where(in("a", "b", "c'); --comment"));
         assertEquals(select.toString(), query);
 
+        query = "SELECT a,b FROM foo WHERE a IN ('a','b','c');";
+        select = select("a", "b").from("foo").where(in("a", Sets.newHashSet("a", "b", "c")));
+        assertEquals(select.toString(), query);
+
         // User Injection?
         query = "SELECT * FROM bar; --(b) FROM foo;";
         select = select().fcall("* FROM bar; --", column("b")).from("foo");

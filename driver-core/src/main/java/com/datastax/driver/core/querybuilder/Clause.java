@@ -17,6 +17,7 @@ package com.datastax.driver.core.querybuilder;
 
 import com.datastax.driver.core.CodecRegistry;
 
+import java.util.Collection;
 import java.util.List;
 
 public abstract class Clause extends Utils.Appendeable {
@@ -68,9 +69,9 @@ public abstract class Clause extends Utils.Appendeable {
 
     static class InClause extends AbstractClause {
 
-        private final List<?> values;
+        private final Collection<?> values;
 
-        InClause(String name, List<?> values) {
+        InClause(String name, Collection<?> values) {
             super(name);
             this.values = values;
 
@@ -90,8 +91,8 @@ public abstract class Clause extends Utils.Appendeable {
             // it is a lot more useful to do:
             //    ... IN ? ...
             // which binds the variable to the full list the IN is on.
-            if (values.size() == 1 && values.get(0) instanceof BindMarker) {
-                Utils.appendName(name, sb).append(" IN ").append(values.get(0));
+            if (values.size() == 1 && values.iterator().next() instanceof BindMarker) {
+                Utils.appendName(name, sb).append(" IN ").append(values.iterator().next());
                 return;
             }
 
@@ -101,7 +102,7 @@ public abstract class Clause extends Utils.Appendeable {
 
         @Override
         Object firstValue() {
-            return values.isEmpty() ? null : values.get(0);
+            return values.isEmpty() ? null : values.iterator().next();
         }
 
         @Override

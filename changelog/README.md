@@ -1,5 +1,10 @@
 ## Changelog
 
+### 3.4.0 (in progress)
+
+- [improvement] JAVA-1619: Update QueryBuilder.in to support Collection input.
+
+
 ### 3.3.0
 
 - [bug] JAVA-1469: Update LoggingRetryPolicy to deal with SLF4J-353.

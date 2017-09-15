@@ -351,6 +351,19 @@ public final class QueryBuilder {
      * @param values the values
      * @return the corresponding where clause.
      */
+    public static Clause in(String name, Collection<?> values) {
+        return new Clause.InClause(name, values);
+    }
+
+    /**
+     * Create an "in" {@code WHERE} clause stating the provided column must be equal
+     * to one of the provided values.
+     *
+     * @param name   the column name
+     * @param values the values
+     * @return the corresponding where clause.
+     * @deprecated Use {@link #in(String, Collection)} instead.
+     */
     public static Clause in(String name, List<?> values) {
         return new Clause.InClause(name, values);
     }
