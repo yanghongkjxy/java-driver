@@ -605,7 +605,7 @@ public class QueryBuilderTest {
         assertEquals(select.toString(), query);
 
         query = "SELECT a,b FROM foo WHERE a IN ('a','b','c');";
-        select = select("a", "b").from("foo").where(in("a", Sets.newHashSet("a", "b", "c")));
+        select = select("a", "b").from("foo").where(in("a", Sets.newLinkedHashSet(Arrays.asList("a", "b", "c"))));
         assertEquals(select.toString(), query);
 
         // User Injection?
